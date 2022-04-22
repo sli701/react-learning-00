@@ -4,23 +4,23 @@ import "./ExpenseForm.css"
 
 const ExpenseForm = () => {
     //Option 1: working with multiple state
-    // const [enteredTitle, setEnteredTitle] = useState("");
-    // const [enteredAmount, setEnteredAmount] = useState("");
-    // const [enteredDate, setEnterDate] = useState("");
+    const [enteredTitle, setEnteredTitle] = useState("");
+    const [enteredAmount, setEnteredAmount] = useState("");
+    const [enteredDate, setEnterDate] = useState("");
 
-    // const titleChangeHandler = (event) =>{
-    //     console.log("Title Changed");
-    //     console.log(event.target.value);
-    //     setEnteredTitle(event.target.value);
-    // }
+    const titleChangeHandler = (event) =>{
+        console.log("Title Changed");
+        console.log(event.target.value);
+        setEnteredTitle(event.target.value);
+    }
 
-    // const amountChangeHandler = (event) => {
-    //     setEnteredAmount(event.target.value);
-    // }
+    const amountChangeHandler = (event) => {
+        setEnteredAmount(event.target.value);
+    }
 
-    // const dateChangeHandler = (event) => {
-    //     setEnterDate(event.target.value);
-    // }
+    const dateChangeHandler = (event) => {
+        setEnterDate(event.target.value);
+    }
 
 
     // Option 2: because React schedule update. it does not perform the setUserInput funtion instantly there for we might consider option 3
@@ -54,47 +54,61 @@ const ExpenseForm = () => {
     // }
 
     //Option 3:
-    const [userInput, setUserInput] = useState({
-        enteredTitle: '',
-        entetedAmount: '',
-        enteredDate: ''
-    })
+    // const [userInput, setUserInput] = useState({
+    //     enteredTitle: '',
+    //     entetedAmount: '',
+    //     enteredDate: ''
+    // })
 
     /*
      by passing an anonymous function to the SET function.
      React guaraneet that the 'prevState' contains the latest state of the value.
      whenever the state update depends on the previous update, then we need to pass an anonymous funtion.
     */
-    const titleChangeHandler = (event) =>{
+    // const titleChangeHandler = (event) =>{
 
-        setUserInput((prevState)=>{
-            return({
-                ...prevState,
-                enteredTitle: event.target.value
-            })
-        })
-    }
+    //     setUserInput((prevState)=>{
+    //         return({
+    //             ...prevState,
+    //             enteredTitle: event.target.value
+    //         })
+    //     })
+    // }
 
-    const amountChangeHandler = (event) => {
-        setUserInput((prevState)=>{
-            return({
-                ...prevState,
-                entetedAmount: event.target.value
-            })
-        })
-    }
+    // const amountChangeHandler = (event) => {
+    //     setUserInput((prevState)=>{
+    //         return({
+    //             ...prevState,
+    //             entetedAmount: event.target.value
+    //         })
+    //     })
+    // }
 
-    const dateChangeHandler = (event) => {
-        setUserInput((prevState)=>{
-            return({
-                ...prevState,
-                enteredDate: event.target.value
-            })
-        })
+    // const dateChangeHandler = (event) => {
+    //     setUserInput((prevState)=>{
+    //         return({
+    //             ...prevState,
+    //             enteredDate: event.target.value
+    //         })
+    //     })
+    // }
+
+
+    const submitHandler = (event) => {
+        // not reloading the page, not sending new request to the server
+        event.preventDefault();
+
+        const expenseData = {
+            title: enteredTitle,
+            amount: enteredAmount,
+            date: new Date(enteredDate)
+        }
+
+        console.log(expenseData)
     }
 
     return(
-        <form>
+        <form onSubmit={submitHandler}>
             <div className="new-expense__controls">
                 <div className="new-expense__control">
                     <label > Title</label>
