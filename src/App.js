@@ -27,6 +27,12 @@ const App = () => {
     },
   ];
 
+  //A
+  const addExpenseHandler = (expense) => {
+    console.log('In App.js');
+    console.log(expense);
+  }
+
   //  this is the alternative to the JSX code below, and also the reason why we need "import React from "react";"
   /** this is under-the-hood, behind-the-scenes stuff */
   // return React.createElement(
@@ -39,7 +45,8 @@ const App = () => {
 
   return (
     <div>
-      <NewExpense />
+      {/* B */}
+      <NewExpense onAddExpense={addExpenseHandler} />
 
       <Expense items={expenses} />
 

@@ -2,15 +2,15 @@ import react, { useState } from "react";
 import "./ExpenseForm.css"
 // import { useState } from "react/cjs/react.production.min";
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
     //Option 1: working with multiple state
     const [enteredTitle, setEnteredTitle] = useState("");
     const [enteredAmount, setEnteredAmount] = useState("");
     const [enteredDate, setEnterDate] = useState("");
 
     const titleChangeHandler = (event) =>{
-        console.log("Title Changed");
-        console.log(event.target.value);
+        //console.log("Title Changed");
+        //console.log(event.target.value);
         setEnteredTitle(event.target.value);
     }
 
@@ -104,7 +104,8 @@ const ExpenseForm = () => {
             date: new Date(enteredDate)
         }
 
-        console.log(expenseData);
+        //console.log(expenseData);
+        props.onSaveExpenseData(expenseData); //2
 
         setEnteredTitle('');
         setEnteredAmount('');
@@ -116,19 +117,19 @@ const ExpenseForm = () => {
         <form onSubmit={submitHandler}>
             <div className="new-expense__controls">
                 <div className="new-expense__control">
-                    <label > Title</label>
+                    <label >Title</label>
                     {/* Adding Two-Way Binding */}
                     <input type="text" value={enteredTitle} onChange={titleChangeHandler} /> 
                 </div>
 
                 <div className="new-expense__control">
-                    <label > Amount</label>
+                    <label >Amount</label>
                     {/* Adding Two-Way Binding */}
                     <input type="number" min="0.01" step="0.01" value={enteredAmount} onChange={amountChangeHandler}/>
                 </div>
 
                 <div className="new-expense__control">
-                    <label> Date</label>
+                    <label>Date</label>
                     {/* Adding Two-Way Biding */}
                     <input type="date" min="2019-01-01" step0="2022-12-31" value={enteredDate} onChange={dateChangeHandler}/>
                 </div>

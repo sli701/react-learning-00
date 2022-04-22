@@ -4,9 +4,9 @@ import Card from './Card';
 
 import React,{ useState } from 'react';
 
-const ClickMeHandlder = () => {
-    console.log('!!clicked me!!');
-}
+// const ClickMeHandlder = () => {
+//     console.log('!!clicked me!!');
+// }
 
 const ExpenseItem = (props) => {
 
