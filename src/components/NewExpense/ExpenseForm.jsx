@@ -1,6 +1,6 @@
 import react, { useState } from "react";
 import "./ExpenseForm.css"
-import { useState } from "react/cjs/react.production.min";
+// import { useState } from "react/cjs/react.production.min";
 
 const ExpenseForm = () => {
     //Option 1: working with multiple state
@@ -23,33 +23,73 @@ const ExpenseForm = () => {
     // }
 
 
-    // Option 2:
+    // Option 2: because React schedule update. it does not perform the setUserInput funtion instantly there for we might consider option 3
+    // const [userInput, setUserInput] = useState({
+    //     enteredTitle: '',
+    //     entetedAmount: '',
+    //     enteredDate: ''
+    // })
+
+    // const titleChangeHandler = (event) =>{
+
+    //     setUserInput({
+    //         ...userInput,                       // copy all the key value pair from the previous userInput object
+    //         enteredTitle: event.target.value    // just overwrite the enteredTitle property
+            
+    //     })
+    // }
+
+    // const amountChangeHandler = (event) => {
+    //     setUserInput({
+    //         ...userInput,
+    //         enteredAmount: event.target.value
+    //     })
+    // }
+
+    // const dateChangeHandler = (event) => {
+    //     setUserInput({
+    //         ...userInput,
+    //         enteredDate: event.target.value
+    //     })
+    // }
+
+    //Option 3:
     const [userInput, setUserInput] = useState({
         enteredTitle: '',
         entetedAmount: '',
         enteredDate: ''
     })
 
+    /*
+     by passing an anonymous function to the SET function.
+     React guaraneet that the 'prevState' contains the latest state of the value.
+     whenever the state update depends on the previous update, then we need to pass an anonymous funtion.
+    */
     const titleChangeHandler = (event) =>{
 
-        setUserInput({
-            ...userInput,                       // copy all the key value pair from the previous userInput object
-            enteredTitle: event.target.value    // just overwrite the enteredTitle property
-            
+        setUserInput((prevState)=>{
+            return({
+                ...prevState,
+                enteredTitle: event.target.value
+            })
         })
     }
 
     const amountChangeHandler = (event) => {
-        setUserInput({
-            ...userInput,
-            enteredAmount: event.target.value
+        setUserInput((prevState)=>{
+            return({
+                ...prevState,
+                entetedAmount: event.target.value
+            })
         })
     }
 
-    const enteredDate = (event) => {
-        setUserInput({
-            ...userInput,
-            enteredDate: event.target.value
+    const dateChangeHandler = (event) => {
+        setUserInput((prevState)=>{
+            return({
+                ...prevState,
+                enteredDate: event.target.value
+            })
         })
     }
 
