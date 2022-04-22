@@ -3,24 +3,54 @@ import "./ExpenseForm.css"
 import { useState } from "react/cjs/react.production.min";
 
 const ExpenseForm = () => {
+    //Option 1: working with multiple state
+    // const [enteredTitle, setEnteredTitle] = useState("");
+    // const [enteredAmount, setEnteredAmount] = useState("");
+    // const [enteredDate, setEnterDate] = useState("");
 
-    const [enteredTitle, setEnteredTitle] = useState("");
-    const [enteredAmount, setEnteredAmount] = useState("");
-    const [enteredDate, setEnterDate] = useState("");
+    // const titleChangeHandler = (event) =>{
+    //     console.log("Title Changed");
+    //     console.log(event.target.value);
+    //     setEnteredTitle(event.target.value);
+    // }
 
+    // const amountChangeHandler = (event) => {
+    //     setEnteredAmount(event.target.value);
+    // }
+
+    // const dateChangeHandler = (event) => {
+    //     setEnterDate(event.target.value);
+    // }
+
+
+    // Option 2:
+    const [userInput, setUserInput] = useState({
+        enteredTitle: '',
+        entetedAmount: '',
+        enteredDate: ''
+    })
 
     const titleChangeHandler = (event) =>{
-        console.log("Title Changed");
-        console.log(event.target.value);
-        setEnteredTitle(event.target.value);
+
+        setUserInput({
+            ...userInput,                       // copy all the key value pair from the previous userInput object
+            enteredTitle: event.target.value    // just overwrite the enteredTitle property
+            
+        })
     }
 
     const amountChangeHandler = (event) => {
-        setEnteredAmount(event.target.value);
+        setUserInput({
+            ...userInput,
+            enteredAmount: event.target.value
+        })
     }
 
-    const dateChangeHandler = (event) => {
-        setEnterDate(event.target.value);
+    const enteredDate = (event) => {
+        setUserInput({
+            ...userInput,
+            enteredDate: event.target.value
+        })
     }
 
     return(
