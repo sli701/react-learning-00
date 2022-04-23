@@ -49,6 +49,7 @@ const App = () => {
       {/* 60: lifting the state up */}
       <NewExpense onAddExpense={addExpenseHandler} />
 
+      
       <Expense items={expenses} />
 
     </div>
