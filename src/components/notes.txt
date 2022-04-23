@@ -1,0 +1,7 @@
+Controlled Component:
+- ExpensesFilter
+- Values, and changes to the value is being handled at its parent
+
+Stateful & stateless Component:
+- managed or not managed state
+- stateless: ExpenseItem
