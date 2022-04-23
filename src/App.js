@@ -46,6 +46,7 @@ const App = () => {
   return (
     <div>
       {/* B */}
+      {/* 60: lifting the state up */}
       <NewExpense onAddExpense={addExpenseHandler} />
 
       <Expense items={expenses} />
