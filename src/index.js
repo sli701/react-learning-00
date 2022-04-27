@@ -7,6 +7,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
 
 
-setInterval(()=>{
-    console.log("hello")
-}, 3000)
+// setInterval(()=>{
+//     console.log("hello")
+// }, 3000)

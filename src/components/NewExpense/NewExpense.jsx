@@ -11,8 +11,8 @@ const NewExpense = (props) => { //C
 
         //3
         const expenseData = {
-            ...enteredExpenseData,
-            id: Math.random().toString()
+            id: Math.random().toString(),
+            ...enteredExpenseData
         };
 
        // console.log(expenseData);
