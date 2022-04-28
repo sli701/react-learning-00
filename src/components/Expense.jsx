@@ -4,7 +4,7 @@ import Card from "./Card";
 
 import ExpensesFilter from "./ExpensesFilter";
 
-import react, {useState} from "react";
+import {useState} from "react";
 
 const Expense = (props) => {
 
@@ -23,8 +23,14 @@ const Expense = (props) => {
           <ExpensesFilter selected={filteredYear} onExpensesFilterChange={ExpensesChangeHandle}/>
           { // Rendering list of items
           props.items.map(
-            (expense)=>{
-              return <ExpenseItem title={expense.title} amount={expense.amount} date={expense.date}></ExpenseItem>
+            (expense,index)=>{
+              return <ExpenseItem 
+              key= {expense.id}
+              title={expense.title}  
+              amount={expense.amount} 
+              date={expense.date} />
+
+              
            })
           }
           {/* <ExpenseItem title={props.items[0].title} amount={props.items[0].amount} date={props.items[0].date}></ExpenseItem>
