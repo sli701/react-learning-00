@@ -15,6 +15,10 @@ const Expense = (props) => {
     setFilteredYear(enteredYear);
   }
 
+  const filterExpenses = props.items.filter((expense)=>{
+    return expense.date.getFullYear().toString() === filteredYear  
+  })
+
   // Passing data from parent to children using props
     return (
      
@@ -22,7 +26,7 @@ const Expense = (props) => {
         <Card className="expenses">
           <ExpensesFilter selected={filteredYear} onExpensesFilterChange={ExpensesChangeHandle}/>
           { // Rendering list of items
-          props.items.map(
+          filterExpenses.map(
             (expense,index)=>{
               return <ExpenseItem 
               key= {expense.id}
@@ -30,7 +34,6 @@ const Expense = (props) => {
               amount={expense.amount} 
               date={expense.date} />
 
-              
            })
           }
           {/* <ExpenseItem title={props.items[0].title} amount={props.items[0].amount} date={props.items[0].date}></ExpenseItem>

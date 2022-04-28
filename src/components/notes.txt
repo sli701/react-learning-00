@@ -5,3 +5,5 @@ Controlled Component:
 Stateful & stateless Component:
 - managed or not managed state
 - stateless: ExpenseItem
+
+Always add 'Key' property when using MAP() function
